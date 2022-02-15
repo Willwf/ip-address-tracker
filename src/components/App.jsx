@@ -1,3 +1,4 @@
+import { GlobalStyle } from "../styles/globalStyles.js";
 import {
   AppDiv,
   Button,
@@ -14,6 +15,7 @@ import {
 function App() {
   return (
     <AppDiv>
+      <GlobalStyle />
       <Title>IP Address Tracker</Title>
       <InputField>
         <Input placeholder="Search for any IP address or domain"></Input>
@@ -22,7 +24,7 @@ function App() {
       <MapDiv>
         <LocationInfo>
           <Info>
-            <InfoTitle>Ip Adress</InfoTitle>
+            <InfoTitle>Ip Address</InfoTitle>
             <InfoValue>192.212.174.101</InfoValue>
           </Info>
           <Info>
