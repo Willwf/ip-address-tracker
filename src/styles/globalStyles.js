@@ -11,8 +11,9 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: url("./public/pattern-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+
+    height: 100vh;
   }
+
 
 `;

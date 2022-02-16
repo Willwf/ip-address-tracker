@@ -8,6 +8,8 @@ export const AppDiv = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  height: 100vh;
 `;
 
 export const Title = styled.h1`
@@ -17,6 +19,9 @@ export const Title = styled.h1`
   font-size: 2.7rem;
 
   margin: 3vh 0;
+
+  flex-grow: 0;
+  flex-basis: auto;
 `;
 
 export const InputField = styled.div`
@@ -76,14 +81,15 @@ export const Button = styled.button`
 `;
 
 export const MapDiv = styled.div`
-  background: tomato;
-
   width: 100%;
   height: 35vh;
 
   margin-top: 24vh;
 
   position: relative;
+
+  flex-grow: 1;
+  flex-basis: auto;
 `;
 
 export const LocationInfo = styled.div`
@@ -129,5 +135,5 @@ export const InfoValue = styled.p`
   color: ${colors.VeryDarkGray};
   font-size: 2rem;
   font-family: "Rubik", sans-serif;
-  font-weight: 500;
+  font-weight: 700;
 `;
