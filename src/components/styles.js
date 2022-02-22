@@ -24,7 +24,7 @@ export const Title = styled.h1`
   flex-basis: auto;
 `;
 
-export const InputField = styled.div`
+export const Form = styled.form`
   width: 90vw;
   height: 8vh;
 
@@ -34,7 +34,7 @@ export const InputField = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 80%;
+  width: 100%;
   height: 100%;
 
   border: none;
@@ -56,7 +56,8 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 18%;
+  max-width: 6rem;
+  width: 25%;
   height: 100%;
 
   border: none;
@@ -90,6 +91,7 @@ export const MapDiv = styled.div`
 
   flex-grow: 1;
   flex-basis: auto;
+  background: tomato;
 `;
 
 export const LocationInfo = styled.div`
@@ -136,4 +138,5 @@ export const InfoValue = styled.p`
   font-size: 2rem;
   font-family: "Rubik", sans-serif;
   font-weight: 700;
+  text-align: center;
 `;
