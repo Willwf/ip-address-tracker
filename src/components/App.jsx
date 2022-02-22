@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { GlobalStyle } from "../styles/globalStyles.js";
+import { Map } from "./MapContainer/Map.jsx";
 import {
   AppDiv,
   Button,
@@ -21,8 +22,8 @@ function App() {
   const [city, setCity] = useState("Mountain View");
   const [postalCode, setPostalCode] = useState("94043");
   const [isp, setIsp] = useState("Google LLC");
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [latitude, setLatitude] = useState(37.40599);
+  const [longitude, setLongitude] = useState(-122.078514);
 
   // useEffect(() => {
   //   fetch(
@@ -85,6 +86,7 @@ function App() {
             <InfoValue>{isp}</InfoValue>
           </Info>
         </LocationInfo>
+        <Map latitude={latitude} longitude={longitude} />
       </MapDiv>
     </AppDiv>
   );

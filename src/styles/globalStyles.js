@@ -15,5 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     height: 100vh;
   }
 
-
+  .leaflet-container {
+    z-index: 0;
+  }
 `;

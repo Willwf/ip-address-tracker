@@ -26,7 +26,7 @@ export const Title = styled.h1`
 
 export const Form = styled.form`
   width: 90vw;
-  height: 8vh;
+  height: 10vh;
 
   display: flex;
   justify-content: center;
@@ -83,7 +83,7 @@ export const Button = styled.button`
 
 export const MapDiv = styled.div`
   width: 100%;
-  height: 35vh;
+  height: 100%;
 
   margin-top: 24vh;
 
@@ -113,6 +113,9 @@ export const LocationInfo = styled.div`
   left: 0;
   right: 0;
   margin: auto;
+  z-index: 1;
+
+  box-shadow: 0 1rem 2rem #00000085;
 `;
 
 export const Info = styled.div`
