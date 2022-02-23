@@ -15,13 +15,16 @@ import {
 } from "./styles.js";
 
 function App() {
+  const [inputValue, setInputValue] = useState("192.212.174.101");
+
   const [ipAddress, setIpAddress] = useState("192.212.174.101");
+  const [isp, setIsp] = useState("Google LLC");
+
   const [country, setCountry] = useState("US");
   const [region, setRegion] = useState("California");
   const [timezone, setTimezone] = useState("-07:00");
   const [city, setCity] = useState("Mountain View");
   const [postalCode, setPostalCode] = useState("94043");
-  const [isp, setIsp] = useState("Google LLC");
   const [latitude, setLatitude] = useState(37.40599);
   const [longitude, setLongitude] = useState(-122.078514);
 
@@ -50,7 +53,15 @@ function App() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setIpAddress(event.target[0].value);
+    if (event.target[0].value) {
+      setIpAddress(event.target[0].value);
+      setInputValue(event.target[0].value);
+    }
+  }
+
+  function inputFormater(event) {
+    console.log(event.target.value);
+    setInputValue(event.target.value);
   }
 
   return (
@@ -62,7 +73,13 @@ function App() {
           type="text"
           name="ipAddress"
           placeholder="Search for any IP address or domain"
-          defaultValue={ipAddress}
+          value={inputValue}
+          onChange={inputFormater}
+          minlength="7"
+          maxLength="15"
+          size="15"
+          pattern="^((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])$"
+          title="x.x.x.x with x being from 1 to 255"
         ></Input>
         <Button type="submit">&gt;</Button>
       </Form>
