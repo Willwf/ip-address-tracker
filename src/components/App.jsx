@@ -5,11 +5,11 @@ import {
   AppDiv,
   Button,
   Form,
-  Info,
+  InfoSection,
   InfoTitle,
   InfoValue,
   Input,
-  LocationInfo,
+  LocationInfoCard,
   MapDiv,
   Title,
 } from "./styles.js";
@@ -40,9 +40,10 @@ function App() {
   //       setTimezone(result.location.timezone);
   //       setCity(result.location.city);
   //       setPostalCode(result.location.postalCode);
-  //       setIsp(result.isp);
   //       setLatitude(result.location.lat);
   //       setLongitude(result.location.lng);
+
+  //       setIsp(result.isp);
   //       setIpAddress(result.ip);
   //     });
   // }, [ipAddress]);
@@ -66,26 +67,26 @@ function App() {
         <Button type="submit">&gt;</Button>
       </Form>
       <MapDiv>
-        <LocationInfo>
-          <Info>
+        <LocationInfoCard>
+          <InfoSection>
             <InfoTitle>Ip Address</InfoTitle>
             <InfoValue>{ipAddress}</InfoValue>
-          </Info>
-          <Info>
+          </InfoSection>
+          <InfoSection>
             <InfoTitle>Location</InfoTitle>
             <InfoValue>
               {city}, {region}, {country} {postalCode}
             </InfoValue>
-          </Info>
-          <Info>
+          </InfoSection>
+          <InfoSection>
             <InfoTitle>Timezone</InfoTitle>
             <InfoValue>UTC {timezone}</InfoValue>
-          </Info>
-          <Info>
+          </InfoSection>
+          <InfoSection>
             <InfoTitle>ISP</InfoTitle>
             <InfoValue>{isp}</InfoValue>
-          </Info>
-        </LocationInfo>
+          </InfoSection>
+        </LocationInfoCard>
         <Map latitude={latitude} longitude={longitude} />
       </MapDiv>
     </AppDiv>
