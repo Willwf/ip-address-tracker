@@ -27,8 +27,6 @@ function App() {
     )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
-
         setCountry(result.location.country);
         setRegion(result.location.region);
         setTimezone(result.location.timezone);
@@ -39,19 +37,35 @@ function App() {
 
         setIsp(result.isp);
         setIpAddress(result.ip);
+        setInputValue(result.ip);
       });
-  }, [ipAddress]);
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
     if (event.target[0].value) {
       setIpAddress(event.target[0].value);
       setInputValue(event.target[0].value);
+
+      fetch(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${event.target[0].value}`
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          setCountry(result.location.country);
+          setRegion(result.location.region);
+          setTimezone(result.location.timezone);
+          setCity(result.location.city);
+          setPostalCode(result.location.postalCode);
+          setLatitude(result.location.lat);
+          setLongitude(result.location.lng);
+
+          setIsp(result.isp);
+        });
     }
   }
 
   function inputFormater(event) {
-    console.log(event.target.value);
     setInputValue(event.target.value);
   }
 
