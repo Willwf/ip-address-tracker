@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: url("./public/pattern-bg.png");
+    background: url("./pattern-bg.png");
 
     height: 100vh;
   }

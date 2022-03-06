@@ -1,55 +1,46 @@
 import { useState, useEffect } from "react";
 import { GlobalStyle } from "../styles/globalStyles.js";
 import { Map } from "./MapContainer/Map.jsx";
-import {
-  AppDiv,
-  Button,
-  Form,
-  InfoSection,
-  InfoTitle,
-  InfoValue,
-  Input,
-  LocationInfoCard,
-  MapDiv,
-  Title,
-} from "./styles.js";
+import * as styles from "./styles.js";
 
 function App() {
-  const [inputValue, setInputValue] = useState("192.212.174.101");
+  const apiKey = import.meta.env.VITE_API_KEY;
 
-  const [ipAddress, setIpAddress] = useState("192.212.174.101");
-  const [isp, setIsp] = useState("Google LLC");
+  const [inputValue, setInputValue] = useState("");
 
-  const [country, setCountry] = useState("US");
-  const [region, setRegion] = useState("California");
-  const [timezone, setTimezone] = useState("-07:00");
-  const [city, setCity] = useState("Mountain View");
-  const [postalCode, setPostalCode] = useState("94043");
+  const [ipAddress, setIpAddress] = useState("");
+  const [isp, setIsp] = useState("");
+
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [timezone, setTimezone] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [latitude, setLatitude] = useState(37.40599);
   const [longitude, setLongitude] = useState(-122.078514);
 
-  // useEffect(() => {
-  //   fetch(
-  //     ipAddress
-  //       ? `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`
-  //       : `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ipAddress}`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((result) => {
-  //       console.log(result);
+  useEffect(() => {
+    fetch(
+      ipAddress
+        ? `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}`
+        : `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ipAddress}`
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
 
-  //       setCountry(result.location.country);
-  //       setRegion(result.location.region);
-  //       setTimezone(result.location.timezone);
-  //       setCity(result.location.city);
-  //       setPostalCode(result.location.postalCode);
-  //       setLatitude(result.location.lat);
-  //       setLongitude(result.location.lng);
+        setCountry(result.location.country);
+        setRegion(result.location.region);
+        setTimezone(result.location.timezone);
+        setCity(result.location.city);
+        setPostalCode(result.location.postalCode);
+        setLatitude(result.location.lat);
+        setLongitude(result.location.lng);
 
-  //       setIsp(result.isp);
-  //       setIpAddress(result.ip);
-  //     });
-  // }, [ipAddress]);
+        setIsp(result.isp);
+        setIpAddress(result.ip);
+      });
+  }, [ipAddress]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -65,11 +56,11 @@ function App() {
   }
 
   return (
-    <AppDiv>
+    <styles.AppDiv>
       <GlobalStyle />
-      <Title>IP Address Tracker</Title>
-      <Form onSubmit={handleSubmit}>
-        <Input
+      <styles.Title>IP Address Tracker</styles.Title>
+      <styles.Form onSubmit={handleSubmit}>
+        <styles.Input
           type="text"
           name="ipAddress"
           placeholder="Search for any IP address or domain"
@@ -80,33 +71,33 @@ function App() {
           size="15"
           pattern="^((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])$"
           title="x.x.x.x with x being from 1 to 255"
-        ></Input>
-        <Button type="submit">&gt;</Button>
-      </Form>
-      <MapDiv>
-        <LocationInfoCard>
-          <InfoSection>
-            <InfoTitle>Ip Address</InfoTitle>
-            <InfoValue>{ipAddress}</InfoValue>
-          </InfoSection>
-          <InfoSection>
-            <InfoTitle>Location</InfoTitle>
-            <InfoValue>
+        ></styles.Input>
+        <styles.Button type="submit">&gt;</styles.Button>
+      </styles.Form>
+      <styles.MapDiv>
+        <styles.LocationInfoCard>
+          <styles.InfoSection>
+            <styles.InfoTitle>Ip Address</styles.InfoTitle>
+            <styles.InfoValue>{ipAddress}</styles.InfoValue>
+          </styles.InfoSection>
+          <styles.InfoSection>
+            <styles.InfoTitle>Location</styles.InfoTitle>
+            <styles.InfoValue>
               {city}, {region}, {country} {postalCode}
-            </InfoValue>
-          </InfoSection>
-          <InfoSection>
-            <InfoTitle>Timezone</InfoTitle>
-            <InfoValue>UTC {timezone}</InfoValue>
-          </InfoSection>
-          <InfoSection>
-            <InfoTitle>ISP</InfoTitle>
-            <InfoValue>{isp}</InfoValue>
-          </InfoSection>
-        </LocationInfoCard>
+            </styles.InfoValue>
+          </styles.InfoSection>
+          <styles.InfoSection>
+            <styles.InfoTitle>Timezone</styles.InfoTitle>
+            <styles.InfoValue>UTC {timezone}</styles.InfoValue>
+          </styles.InfoSection>
+          <styles.InfoSection>
+            <styles.InfoTitle>ISP</styles.InfoTitle>
+            <styles.InfoValue>{isp}</styles.InfoValue>
+          </styles.InfoSection>
+        </styles.LocationInfoCard>
         <Map latitude={latitude} longitude={longitude} />
-      </MapDiv>
-    </AppDiv>
+      </styles.MapDiv>
+    </styles.AppDiv>
   );
 }
 
